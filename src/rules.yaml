@@ -1,0 +1,42 @@
+groups:
+- name: CriticalAlerts
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 1m
+    annotations:
+      title: '🚨 Instance is down'
+      description: "Instance _{{ $labels.instance }}_ of job _{{ $labels.job }}_ has been down for more than 1 minute.\nCheck [prometheus](http://0.0.0.0:9090/targets) for details"
+    labels:
+      severity: 'critical'
+      
+      
+  - alert: HighCpuUsage
+    expr: cpu_usage > 1
+    for: 5s
+    annotations:
+      title: '⚠️ High CPU usage'
+      description: "Current job uses too much CPU resources\nInstance _{{ $labels.instance }}_ of job _{{ $labels.job }}_ uses >40% of CPU\nCheck [prometheus](http://0.0.0.0:9090/targets) for details"
+    labels:
+      severity: 'medium'
+     
+     
+  - alert: HighMemUsage 
+    expr: memory_usage/total_memory > 0.1
+    for: 5s
+
+    annotations:
+      title: '⚠️ High memory usage'
+      description: "Current job uses too much memory resources\nInstance _{{ $labels.instance }}_ of job _{{ $labels.job }}_ uses >40% of memory\nCheck [prometheus](http://0.0.0.0:9090/targets) for details"
+    labels:
+      severity: 'medium'
+      
+      
+  - alert: RcvLimitExceeded
+    expr: sum by(instance, job)(bytes_received_total) > 1024 * 1024 * 100
+    annotations:
+      title: '⚠️ Receive Limit Exceeded'
+      description: "Current job exceeded receive limit (100MB)\nInstance _{{ $labels.instance }}_ of job _{{ $labels.job }}_ exceeded limit on received bytes (100MB).\nCheck [prometheus](http://0.0.0.0:9090/targets) for details"
+    labels:
+      severity: 'medium'
+
