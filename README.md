@@ -11,6 +11,6 @@ To start tracing just run `trace.sh` or `graf_trace.sh`. For example to trace pr
 ```
 You can use `-h` to view examples and all possible options.  
 `tcp_trace.sh` works almost the same as tcpdump does.  
-Examples of grafana dashboards:  
+Examples of Grafana dashboards:  
 <p align="center"><img src="https://github.com/ComradeAndrewQS37/App-Tracer/blob/main/screenshots/cpu_usage.png" height=400></p>
 <p align="center"><img src="https://github.com/ComradeAndrewQS37/App-Tracer/blob/main/screenshots/tcp_ip.png" height=404></p>
