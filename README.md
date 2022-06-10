@@ -1,5 +1,5 @@
 # App-Tracer
-Instrument for tracing apps using eBPF.  
+Instrument for tracing apps using eBPF. App Tracer can visualize data, export it and send alerts about crucial events via Telegram.  
 ## Configuring
 Uses [BCC](https://github.com/iovisor/bcc) for working with eBPF, [Prometheus](https://prometheus.io) for storing data, [Grafana](https://grafana.com) for visualiation and [Alertmanager](https://github.com/prometheus/alertmanager) for Telegram alerts. Before using App Tracer make sure you have them all installed. By default Prometheus can be found at localhost:9090, Alertmanager at localhost:9093, Grafana at localhost:3000.  
 To configure Telegram alerts insert bot token in its field in [alertmanager.yml](src/alertmanager.yml) and start Alertmanager.  
